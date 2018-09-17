@@ -5,6 +5,7 @@ decrease            减少
 exclude             排除，不包括
 include             包括
 increase            增加
+mute				静音
 punctuation         标点
 redo                重做
 substitute          替代

@@ -41,3 +41,6 @@ CTRL+Z # stop the current command, resume with fg in the foreground or bg in the
 DELETE # deletes one character backward
 !!     # repeates the last command
 exit   # logs out of current session
+
+
+# RESEARCHING FILES
