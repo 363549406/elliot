@@ -1,0 +1,15 @@
+# WORDS
+
+clipboard           剪切板
+decrease            减少
+exclude             排除，不包括
+include             包括
+increase            增加
+punctuation         标点
+redo                重做
+substitute          替代
+swap                交换
+transpose           颠倒
+undo                复原
+vertical            垂直
+yank                猛拉。vim中可以认为是copy

@@ -1,0 +1,150 @@
+# CURSOR MOVEMENTS
+
+h               move left
+j               move down
+k               move up
+l               move right
+w               jump by start of words (punctuation considered words)
+W               jump by words (space separate words)
+e               jump to end of words (punctuation considered words)
+E               jump to end of words (no punctuation)
+b               jump backword by words (punctuation considered words)
+B               jump backward by words (no punctuation)
+ge              jump backward to end of words
+0               (zero) start of line
+^               first non-blank character of line
+$               end of line
+-               move line upwards, on the first non black character
++               move line downwards, on the first non black character
+<enter>         move line downwards, on the first non black character
+gg              go to first line
+G               go to last line
+nG              go to line n
+:n              go to line n
+)               move the cursor forward to the next sentence.
+(               move the cursor backward by a sentence.
+}               move the cursor a paragraph forwards
+{               move the cursor a paragraph backwards
+]]              move the cursor a section forwards or to the next {
+[[              move the cursor a section backwards or the previous {
+CTRL-f          move the cursor forward by a screen of text
+CTRL-b          move the cursor backward by a screen of text
+CTRL-u          move the cursor up by half a screen
+CTRL-d          move the cursor down by half a screen 
+H               move the cursor to the top of the screen
+M               move the cursor to the middle of the screen
+L               move the cursor to the bottom of the screen
+fx              search line forward for 'x'
+Fx              search line backward for 'x'
+tx              search line forward before 'x'
+Tx              search line backward before 'x'
+
+
+# INSERT MODE
+
+i               start insert mode at cursor
+I               insert at the beginning of the line
+a               append after the cursor
+A               append at the end of the line
+o               open (append) blank line below current line
+O               open blank line above current line
+Esc             exit insert mode
+
+
+# EDITING
+
+r               replace a single character (does not use insert mode)
+R               enter Insert mode, replacing characters rather than inserting
+J               join line below to the current one
+cc              change (replace) an entire line
+cw              change (replace) to the end of word
+C               change (replace) to the end of line
+s               delete character at cursor and substitute text
+S               delete line at cursor and substitute text (same as cc)
+xp              transpose two letters (delete and paste, technically)
+u               undo
+CTRL-r          redo
+.               repeat last command
+~               switch case
+g~iw            switch case of current word
+gUiw            make current word uppercase
+guiw            make current word lowercase
+gU$             make uppercase until end of line
+gu$             make lowercase until end of line
+>>              indent line one column to right
+<<              indent line one column to left
+==              auto-indent current line
+ddp             swap current line with next
+ddkp            swap current line with previous
+:%retab         fix spaces / tabs issues in whole file
+:r [name]       insert the file [name] below the cursor
+:r !{cmd}       execute {cmd} and insert its standard output below the cursor
+
+
+# DELETING TEXT
+
+x               delete current character
+X               delete previous character
+dw              delete until the start of the next word, EXCLUDING its first character
+dw              delete to the end of the current word, INCLUDING the last character 
+dd              delete current line
+D               delete from cursor to end of line
+:[range]d       delete [range] lines
+
+
+# COPYING AND MOVING TEXT
+
+yw              yank word
+yy              yank (copy) a line
+2yy             yank 2 lines
+y$              yank to end of line
+p               put (paste) the clipboard after cursor/current line
+:set paste      avoid unexpected effects in pasting
+:registers      display the content of all registers
+"xyw            yank word into register x
+"xyy            yank line into register x
+:[range]y x     yank [range] lines into register x
+"xp             put the text from register x after the cursor
+"xP             put the text from register x before the cursor
+"xgp            just like "p", but leave the cursor just after the new text
+"xgP            just like "P", but leave the cursor just after the new text
+:[line]put x    put the text from register x after [line] 
+
+
+# MULTIPLE FILES
+
+:e filename     edit a file in a new buffer
+:tabe filename  edit a file in a new tab (Vim7, gVim)
+:ls             list all buffer
+:bn             go to next buffer
+:bp             go to previous buffer
+:bd             delete a buffer (close a file)
+:b1             show buffer 1
+:b vimrc        show buffer whose filename begins with "vimrc"
+
+
+# WINDOWS
+
+:sp f           split open f
+:vsp f          vsplit open f
+CTRL-w s        split windows
+CTRL-w w        switch between windows
+CTRL-w q        quit a window
+CTRL-w v        split windows vertically
+CTRL-w x        swap windows
+CTRL-w h        left window
+CTRL-w j        down window
+CTRL-w k        up window
+CTRL-w l        right window
+CTRL-w +        increase window height
+CTRL-w -        decrease window height
+CTRL-w o        close other windows
+
+
+# VISUAL MODE
+
+
+# BOOKMARKS
+
+
+# MACROS
