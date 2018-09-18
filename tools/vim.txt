@@ -1,43 +1,41 @@
 # CURSOR MOVEMENTS
 
-h               move left
-j               move down
-k               move up
-l               move right
-w               jump by start of words (punctuation considered words)
-W               jump by words (space separate words)
-e               jump to end of words (punctuation considered words)
-E               jump to end of words (no punctuation)
-b               jump backword by words (punctuation considered words)
-B               jump backward by words (no punctuation)
-ge              jump backward to end of words
-0               (zero) start of line
-^               first non-blank character of line
+h / j / k / l   move left / move down / move up / move right
+
+CTRL-f          move the cursor forward by a screen of text
+CTRL-b          move the cursor backward by a screen of text
+CTRL-u          move the cursor up by half a screen
+CTRL-d          move the cursor down by half a screen 
+
+b / w			previous / next word
+e / ge			previous / next end of word
+b|w|e / B|W|E   punctuation / space separate words
+
+0               start of line
+^               start of line ( after whitespace )
 $               end of line
--               move line upwards, on the first non black character
-+               move line downwards, on the first non black character
-<enter>         move line downwards, on the first non black character
+
+fx / Fx         search line forward / backward for 'x'
+tx / Tx         search line forward / backward before 'x'
+
 gg              go to first line
 G               go to last line
 nG              go to line n
 :n              go to line n
+
+H               move the cursor to the top of the screen
+M               move the cursor to the middle of the screen
+L               move the cursor to the bottom of the screen
+
+-               move line upwards, on the first non black character
++               move line downwards, on the first non black character
+<enter>         move line downwards, on the first non black character
 )               move the cursor forward to the next sentence.
 (               move the cursor backward by a sentence.
 }               move the cursor a paragraph forwards
 {               move the cursor a paragraph backwards
 ]]              move the cursor a section forwards or to the next {
 [[              move the cursor a section backwards or the previous {
-CTRL-f          move the cursor forward by a screen of text
-CTRL-b          move the cursor backward by a screen of text
-CTRL-u          move the cursor up by half a screen
-CTRL-d          move the cursor down by half a screen 
-H               move the cursor to the top of the screen
-M               move the cursor to the middle of the screen
-L               move the cursor to the bottom of the screen
-fx              search line forward for 'x'
-Fx              search line backward for 'x'
-tx              search line forward before 'x'
-Tx              search line backward before 'x'
 
 
 # INSERT MODE
