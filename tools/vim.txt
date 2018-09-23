@@ -7,8 +7,8 @@ CTRL-b          move the cursor backward by a screen of text
 CTRL-u          move the cursor up by half a screen
 CTRL-d          move the cursor down by half a screen 
 
-b / w			previous / next word
-e / ge			previous / next end of word
+b / w           previous / next word
+e / ge          previous / next end of word
 b|w|e / B|W|E   punctuation / space separate words
 
 0               start of line
