@@ -1,0 +1,58 @@
+# GIT CHEAT SHEET
+
+## CONFIGURE
+
+```
+$ git config --global user.name "[name]"
+$ git config --global user.email "[email address]"
+```
+
+Sets the name/email you want attached to your commit transactions
+
+
+GLOBAL CONFIG -> ~/.git/config
+REPOSITORY CONFIG -> /repository/path/.git/config
+
+## CREATE REPOSITORY
+
+```
+$ git init [project-name]	# creates a new local repository with the specified name
+$ git clone [url]			# Downloads a project and its entire version history
+```
+
+## LOCAL CHANGES
+
+```
+$ git status	# Lists all new or modified files to be committed
+$ git diff		# 
+$ git add .
+$ git commit -m "[descriptive message]"
+$ git commit -v --amend  # amend previous commit
+```
+
+## REVIEW HISTORY
+
+```
+$ git log
+$ git log --follow [file]	# Lists version history for a file, including renames
+$ git log -p [file]			# show changes over time for the specified file
+$ git diff [first-branch] [second-branch]	
+# Shows content differences between two branched
+$ git diff [first-branch] [second-branch] --name-status
+$ git show [commit]			# Outputs metadata and content changes of the specified commit
+$ git blame [file]			# Who changed what and when in file
+```
+
+## BRANCH AND TAG
+
+```
+$ git branch -va			# List all existing branches
+```
+
+## UPDATE & PUBLISH
+
+
+## MERGE AND REBASE
+
+
+## UNDO
