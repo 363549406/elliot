@@ -1,5 +1,6 @@
 # GIT CHEAT SHEET
 
+
 # CONFIGURE
 
 $ git config --global user.name "[name]"
@@ -8,13 +9,16 @@ $ git config --global user.email "[email address]"
 Sets the name/email you want attached to your commit transactions
 
 
-GLOBAL CONFIG -> ~/.git/config
-REPOSITORY CONFIG -> /repository/path/.git/config
+--global : write to global 			> ~/.gitconfig
+--system : write to system-wide 	> $(prefix)/etc/gitconfig
+--local  : write to the repository 	> .git/config
+
 
 # CREATE REPOSITORY
 
 $ git init [project-name]	# creates a new local repository with the specified name
 $ git clone [url]			# Downloads a project and its entire version history
+
 
 # LOCAL CHANGES
 
@@ -23,6 +27,7 @@ $ git diff		#
 $ git add .
 $ git commit -m "[descriptive message]"
 $ git commit -v --amend  # amend previous commit
+
 
 # REVIEW HISTORY
 
@@ -35,14 +40,34 @@ $ git diff [first-branch] [second-branch] --name-status
 $ git show [commit]			# Outputs metadata and content changes of the specified commit
 $ git blame [file]			# Who changed what and when in file
 
+
 # BRANCH AND TAG
 
 $ git branch -va			# List all existing branches
+$ git branch [branch]	    # Creates a new branch
+$ git branch -d [branch]	# Delete a local branch
+$ git checkout [branch]		# Switches to the specified branch and updates the working directory
+$ git checkout --track [remote/branch] # Create a new tracking branch based on a remote branch
+$ git checkout -b [local-branch] [remote/branch] # Create a new branch local-branch and track remote/branch
+$ git tag [tag-name]      	# Mark the current commit with a tag
+
 
 # UPDATE & PUBLISH
+
+$ git remote -v				# List all currently configured remotes
+$ git remote show [remote]	# Show information about a remote
+$ git remote add [shortname] [url] # Add new remote repository, named [shortname]
+$ git fetch [remote]		# Download all changes from [remote], but don't integrate into HEAD
+$ git pull [remote] [branch]# Download changes and directly merge/integrate into HEAD
+$ git push [remote] [branch]
+$ git branch -dr [remote/branch] # Delete a branch on the remote
+$ git push --tags			# Publish your tags
 
 
 # MERGE AND REBASE
 
 
 # UNDO
+
+
+# ADVANCED - workspace
