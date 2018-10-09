@@ -1,0 +1,10 @@
+# Pro Git
+
+# 1.1 About Version Control
+
+1. Local Version Control Systems  	   # 本地
+2. Centralized Version Control Systems # 有一个中心vcs server，各台pc只会获取最新版本代码
+3. Distributed Version Control Systems # 每个pc上都会有完整的version database
+
+所以2中如果中心vcs server丢失就没有了version database，而3中每台pc都可以恢复version database
+
