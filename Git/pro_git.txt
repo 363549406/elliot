@@ -1,5 +1,6 @@
 # Pro Git
 
+
 # 1.1 About Version Control
 
 1. Local Version Control Systems  	   # 本地
@@ -8,6 +9,11 @@
 
 所以2中如果中心vcs server丢失就没有了version database，而3中每台pc都可以恢复version database
 不同于1和2中如SVN中存储的是changes（diff），re-create的时候需要adding up all the patches。而3中使用的是snapshot（快照），这使得git特别快。
+
+
+# 1.3 Getting Started - Git Basics
+
+
 
 # 10.2 Git Internals - Git Objects
 
