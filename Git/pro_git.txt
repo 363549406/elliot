@@ -7,4 +7,8 @@
 3. Distributed Version Control Systems # 每个pc上都会有完整的version database
 
 所以2中如果中心vcs server丢失就没有了version database，而3中每台pc都可以恢复version database
+不同于1和2中如SVN中存储的是changes（diff），re-create的时候需要adding up all the patches。而3中使用的是snapshot（快照），这使得git特别快。
+
+# 10.2 Git Internals - Git Objects
+
 
