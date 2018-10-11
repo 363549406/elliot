@@ -13,6 +13,43 @@
 
 # 1.3 Getting Started - Git Basics
 
+Snapshots, not differences
+
+commit的时候，git take a picture of 所有文件并store a reference to that snapshot. 为了提高效率，如果文件没有改变，Git不会再存储一遍那个文件，而是会link to先前已经存储过的文件。
+
+Git中有working directory - Staging Area - .git directory (Repository) 三个States。
+
+working directory (stage fixes ->) Staging Area (commit ->) .git directory
+
+working directory (<- checkout the project) .git directory
+
+
+# 1.6 Getting Staarted - First-Time Git Setup
+
+1. /etc/gitconfig - git config --system - all users
+2. ~/.gitconfig or ~/.config/git/config - git config --global - the user
+3. repository/.git/config - git config --local or git config - single repository
+
+首先要设置user.name和user.email因为每次commit都会用到这两个信息
+
+
+# 1.7 Getting Staarted - Getting Help
+
+查看man
+$ git help <verb>
+$ man git-<verb>
+
+参看参数
+$ git <verb> -h
+
+IRC channel - irc.freenode.net #git #github
+
+
+# 2.1 Git Basics - Getting a Git Repository
+
+$ git init 会创建名为.git的子目录，含有初始化的Git仓库中所有的必须文件，但是项目里的文件还没有被tracked
+
+$ git clone https://github.com/libgit2/libgit2 
 
 
 # 10.2 Git Internals - Git Objects
