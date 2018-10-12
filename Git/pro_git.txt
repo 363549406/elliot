@@ -50,6 +50,34 @@ IRC channel - irc.freenode.net #git #github
 $ git init 会创建名为.git的子目录，含有初始化的Git仓库中所有的必须文件，但是项目里的文件还没有被tracked
 
 $ git clone https://github.com/libgit2/libgit2 
+会把project中所有history version的数据都拉取下来。Git有不同的transfer protocol，如https、git:// (ssh)
+
+
+# 2.2 Git Basics - Recordig Changes to the Repository
+
+working directory中的文件可以有tracked和untracked两种状态。
+
+untracked           unmodified           modified           staged
+   |--add the file to the next commit------------------------->|
+   |                     |--edit file------>|
+   |                     |                  |--stage file----->|
+   |<---remove file------|                  
+   |                     |<----------------commit--------------|
+
+.gitignore文件中设置不想tracked的文件，.gitignore的格式规范
+
+1. # 被git忽略
+2. 标准的glob模式匹配 如 *.pyc
+3. 以(/)开头防止递归  /TODO 值忽略当前目录下的TODO文件，不会subdir/TODO
+4. 以(/)结尾指定目录  build/
+5. 要忽略指定模式以外的文件或目录，可以在模式前加(!)取反  如果.gitignore已经有*.a 再有 !lib.a 还是会track lib.a的。
+
+$ git diff 会查看working director和staged的差别，--staged或--cached查看staged和上次commit之间的差别，是要提交的信息。
+$ git difftool 命令用其他输出方式如vimdiff来输出diff分析结果
+
+$ git commit 提交 -m选项将提交信息和命令放在一起。-a选项可以把所有已经tracked的文件暂存起来一并提交。
+
+
 
 
 # 10.2 Git Internals - Git Objects
