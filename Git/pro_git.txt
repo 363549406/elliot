@@ -72,10 +72,32 @@ untracked           unmodified           modified           staged
 4. 以(/)结尾指定目录  build/
 5. 要忽略指定模式以外的文件或目录，可以在模式前加(!)取反  如果.gitignore已经有*.a 再有 !lib.a 还是会track lib.a的。
 
-$ git diff 会查看working director和staged的差别，--staged或--cached查看staged和上次commit之间的差别，是要提交的信息。
+$ git diff 会查看working directory和staged的差别，--staged或--cached查看staged和上次commit之间的差别，是要提交的信息。
 $ git difftool 命令用其他输出方式如vimdiff来输出diff分析结果
 
 $ git commit 提交 -m选项将提交信息和命令放在一起。-a选项可以把所有已经tracked的文件暂存起来一并提交。
+
+从git中移除文件，需要从tracked files中移除文件并且commit。rm只是从working space中删除，git rm才是从tracked file中也删除。$ git rm --cached README 是从staging area中移除但是keep it in your working space
+
+$ git mv file_from file_to 移动文件。再用$ git status查看的时候会提示renamed信息
+
+
+# 2.3 Git Basics - Viewing the Commit History
+
+$ git log 查看history信息。-p or --patch参数show the difference (the patch output) introduced in each commit, -n指定limit有几个commit会显示。--stat参数显示each commit entry a list of modifed files. --pretty参数改变format，有用的--pretty=oneline/short/full/fuller，--pretty=format:"%h - %an, %ar : %s"可以自定义格式。--graph参数add a nice little ASCII graph showing your branch and merge history.
+
+Limiting Log Output
+
+1. --since and --until  $ git log --since=2.weeks 日期格式很多 "2018-01-15" or "2 years 1 day 3 minutes ago"
+2. --author filter on a specific author
+3. --grep search for keywords in the commit messages
+4. -S   which takes a string and shows only those commits that changed the number of occurrences of that string
+5. specify a directory or file name, limit the log output to a commits that introduced a change to those files. (also preceded by double dashes -- to sperate the path from the options.)
+6. --no-merges  使用的workflow可能会导致log中有很多merge的commit，此参数，去除那类信息。
+
+
+# 2.4 Git Basics - Undoing Things
+
 
 
 

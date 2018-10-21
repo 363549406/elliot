@@ -1,10 +1,11 @@
 # WORDS
 
+abbreviate          简略
 aka                 又名
 clipboard           剪切板
 comma               逗号
 decrease            减少
-encapsulation		封装
+encapsulation       封装
 enroll              注册 - verb
 exclude             排除，不包括
 include             包括
@@ -15,7 +16,7 @@ prompt              提示
 redo                重做
 substitute          替代
 swap                交换
-syllabus			教学大纲
+syllabus            教学大纲
 transpose           颠倒
 undo                复原
 vertical            垂直
