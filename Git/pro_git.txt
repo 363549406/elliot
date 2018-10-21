@@ -98,9 +98,52 @@ Limiting Log Output
 
 # 2.4 Git Basics - Undoing Things
 
+$ git commit --amend   给个机会重写一次上次的commit message
+$ git reset HEAD <file>...  to unstage - Unstaging a Staged File
+$ git checkout -- <file>... to discard changes in working directory - Unmodifying a Modified File 注意这个命令很危险，你的改动checkout --后就再也找不到了。
 
 
+# 2.5 Git Basics - Working with Remotes
 
+$ git remote 查看所有remote -v shows URLs
+$ git remote add <shortname> <url> 添加一个remote
+$ git fetch <remote> 会pull down all the data from that remote project 好比新的分支。这是download下来，不会自动merge
+$ git pull <remote> <branch> 如果branch已经set up to track a remote branch那直接git pull就可以了
+$ git push <remote> <branch> push it upstream。push需要有权限。如果别人在你上次pull之后修改过remote内容，还需要先pull再push
+$ git remote show <remote> 查看remote详细信息
+$ git remote rename pb pual 给<remote>改名字
+$ git remote remove <remote> remove <remote>
+
+
+# 2.6 Git Basics - Tagging
+
+通常用tag来mark release points
+
+$ git tag   按照alphabetical顺序显示所有tag。使用-l或者--list参数来使用wildcards，如git tag -l "v1.8.5*"
+
+tag的创建支持两种类型：lightweight和annotated。lightweight是pointer to a specific commit。annotated是有自己完整的信息，如checksummed, tagger name, email, etc.
+
+$ git tag -a v1.4 -m "my version 1.4" 使用-a参数创建annotated tag, -m tagging message
+$ git show v1.4 查看tag信息
+$ git tag v1.4-1w 不使用-a, -s, or -m参数
+$ git tag -a v1.2 9fceb02 在某个commit上生成tag
+$ git push <remote> tag 和<remote>分享tag。或者使用--tags push所有的tag
+$ git tag -d v1.4-1w 删除本地的tag。$ git push <remote> :refs/tags/v1.4-1w 更新到remote端
+$ git checkout <tag> 这时会在detached HEAD。或者直接从tag checkout一个分支 $ git checkout -b <branch> <tag>
+
+
+# 2.7 Git Basics - Git Aliases
+
+不一定会用到，但是可以知道。使用git config来设置别名
+
+$ git config --global alias.co checkout 后就可以是使用 $ git co 代替 $ git checkout
+$ git config --global alias.last 'log -l HEAD' $ git last 展示最后一条commit信息
+$ git config --global alias.visual '!gitk' $ git visual 用 ! 符号使用非git命令
+
+
+# 3.1 Git Branching - Branches in a Nutshell
+
+Git处理分支的方式轻量，创建分支、在不同分支间切换在一瞬间完成。
 
 # 10.2 Git Internals - Git Objects
 

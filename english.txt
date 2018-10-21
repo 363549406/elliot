@@ -10,6 +10,7 @@ enroll              注册 - verb
 exclude             排除，不包括
 include             包括
 increase            增加
+inspect             检查
 mute                静音
 punctuation         标点
 prompt              提示
