@@ -4,4 +4,7 @@ Caps Lock Key to Control
 
 # HHKB Keyboard
 
+# Type
+
+Use both Shift key
 
