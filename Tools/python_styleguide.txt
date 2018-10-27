@@ -1,0 +1,36 @@
+# Python Style Guide
+
+# Line length
+
+Maximum line length is 80 characters.
+
+Exceptions:
+    1. long import statements
+    3. inconvenient to split across lines such as URLs or pathnames
+
+除了with statement不要使用反斜杠\来做行连接，使用括号、中括号、大括号。
+对于string可以使用瑞安方式
+
+```
+x = ('This will build a very long long '
+     'long long long long long long string')
+sql = ('select {} from status_comment where {}=%s and '
+       '{}=%s'.format('id', 'status_id', 'state'))
+```
+
+```
+with very_long_first_expression_function() as spam, \
+     very_long_second_expression_function() as beans:
+    place_order(eggs, beans, spam, beans)
+```
+
+
+# Blank Lines
+
+1. Two blank lines:
+    1. function
+    2. class definitions
+2. One blank line:
+    1. between method
+    2. between class line and first method
+    3. appropiate within functions or methods
