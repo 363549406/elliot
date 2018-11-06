@@ -5,6 +5,7 @@ aka                 又名
 clipboard           剪切板
 comma               逗号
 decrease            减少
+dot                 点号
 encapsulation       封装
 enroll              注册 - verb
 exclude             排除，不包括
