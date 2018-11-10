@@ -194,8 +194,33 @@ merge的时候遇到过fast-forward. 当要merge的分支指向的commit是当�
 
 ### 3.5 Git Branching - Remote Branches
 
+`$ git remote show [remote]` 查看remote的信息。
+
+remote-tracking branches are references to the state of remote branches. `<remote>/<branch>` 的形式。
+
+`$ git fetch origin` looks up which server "origin" is, fetches any data from it that you don't yet have, and updates your local database, moving your origin/master pointer to its new, more up-to-date position. 本地的master和origin/master是可以diverge的。
+
+`$ git remote add` 可以添加一个新的remote。当需要share a branch时需要将分支push到远端。
+
+fetch的时候并没有把在本地生成一个分支，只是有了一个不可改变的origin/serverfix pointer。如果需要本地分支可以 `$ git checkout -b serverfix origin/serverfix`
+
+Tracking Branches: 以上从remote-tracking branch automatically create的分支叫做tracking branch，远端的分支叫upstream branch。两者之间直接有联系。如果在tracking branch上输入 `$ git pull` git会自动知道需要使用哪个远端分支。
+
+`$ git checkout --track origin/serverfix` : 直接在本地生成一个serverfix，tracking远端serverfix
+`$ git checkout -b sf origin/serverfix` : 在本地生成一个sf，tracking远端serverfix
+`$ git branch -u origin/serverfix` : 修改本地当前分支的upstream。`-u` or `--set-upstream-to`
+`$ git branch -vv` : 展示分支中更多的信息，包括tracking的分支，以及本地分支is ahead，behind or both
+
+`$ git fetch` 会拉去remote的数据，但是不会merge。`$ git pull` 就相当于 `$ git fetch`后面跟着 `$ git merge` 命令。
+
+删除remote中的分支。`$ git push origin --delete serverfix`
 
 
+### 3.6 Git Branching - Rebasing
+
+rebasing your branches before they are shared.
+
+不要rebase已经shared过的commit。
 
 ### 10.2 Git Internals - Git Objects
 
