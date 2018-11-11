@@ -218,7 +218,26 @@ Tracking Branches: 以上从remote-tracking branch automatically create的分支
 
 ### 3.6 Git Branching - Rebasing
 
-rebasing your branches before they are shared.
+With the rebase command, you can take all the changes that were committed on one branch and replay them on another one.
+
+```
+$ git checkout experiment
+$ git rebase master
+```
+
+It works by going to the common ancestor of the two branches ( the one you're on and the one you're rebasing onto ( the master branch )), getting the diff introduced by each commit of the branch you're on, saving those diffs to temporary files, resetting the current branch to the sam ecommit as the branch you are rebasing onto, and finally applying each change in turn.
+
+上面的命令然后可以回到master分支，`git merge experiment` 这时候是fast-forward merge.
+
+rebase和merge都能合并代码，但是rebasing makes for a cleaner history. 虽然最开始两个分支是parallel的，但是rabase后能让其变为series。
+
+很重要的一点：
+
+> Do not rebase commits that exist outside your repository.
+
+因为当你rebase的时候，you're abandoning existing commits and creating new ones that are similar but different.
+
+所以你可以rebasing your branches before they are shared.
 
 不要rebase已经shared过的commit。
 
