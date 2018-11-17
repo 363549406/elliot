@@ -89,35 +89,35 @@ untracked           unmodified           modified           staged
 
 ### 2.3 Git Basics - Viewing the Commit History
 
-$ git log 查看history信息。-p or --patch参数show the difference (the patch output) introduced in each commit, -n指定limit有几个commit会显示。--stat参数显示each commit entry a list of modifed files. --pretty参数改变format，有用的--pretty=oneline/short/full/fuller，--pretty=format:"%h - %an, %ar : %s"可以自定义格式。--graph参数add a nice little ASCII graph showing your branch and merge history.
+`$ git log` 查看history信息。`-p or --patch`参数show the difference (the patch output) introduced in each commit, -n指定limit有几个commit会显示。--stat参数显示each commit entry a list of modifed files. --pretty参数改变format，有用的--pretty=oneline/short/full/fuller，--pretty=format:"%h - %an, %ar : %s"可以自定义格式。--graph参数add a nice little ASCII graph showing your branch and merge history.
 
 Limiting Log Output
 
-1. --since and --until  $ git log --since=2.weeks 日期格式很多 "2018-01-15" or "2 years 1 day 3 minutes ago"
-2. --author filter on a specific author
-3. --grep search for keywords in the commit messages
-4. -S   which takes a string and shows only those commits that changed the number of occurrences of that string
+1. `--since and --until`  `$ git log --since=2.weeks` 日期格式很多 "2018-01-15" or "2 years 1 day 3 minutes ago"
+2. `--author` filter on a specific author
+3. `--grep` search for keywords in the commit messages
+4. `-S` which takes a string and shows only those commits that changed the number of occurrences of that string
 5. specify a directory or file name, limit the log output to a commits that introduced a change to those files. (also preceded by double dashes -- to sperate the path from the options.)
-6. --no-merges  使用的workflow可能会导致log中有很多merge的commit，此参数，去除那类信息。
+6. `--no-merges`  使用的workflow可能会导致log中有很多merge的commit，此参数，去除那类信息。
 
 
 ### 2.4 Git Basics - Undoing Things
 
-$ git commit --amend   给个机会重写一次上次的commit message
-$ git reset HEAD <file>...  to unstage - Unstaging a Staged File
-$ git checkout -- <file>... to discard changes in working directory - Unmodifying a Modified File 注意这个命令很危险，你的改动checkout --后就再也找不到了。
+`$ git commit --amend`   给个机会重写一次上次的commit message
+`$ git reset HEAD <file>...`  to unstage - Unstaging a Staged File
+`$ git checkout -- <file>...` to discard changes in working directory - Unmodifying a Modified File 注意这个命令很危险，你的改动checkout --后就再也找不到了。
 
 
 ### 2.5 Git Basics - Working with Remotes
 
-$ git remote 查看所有remote -v shows URLs
-$ git remote add <shortname> <url> 添加一个remote
-$ git fetch <remote> 会pull down all the data from that remote project 好比新的分支。这是download下来，不会自动merge
-$ git pull <remote> <branch> 如果branch已经set up to track a remote branch那直接git pull就可以了
-$ git push <remote> <branch> push it upstream。push需要有权限。如果别人在你上次pull之后修改过remote内容，还需要先pull再push
-$ git remote show <remote> 查看remote详细信息
-$ git remote rename pb pual 给<remote>改名字
-$ git remote remove <remote> remove <remote>
+`$ git remote` 查看所有remote -v shows URLs
+`$ git remote add <shortname> <url>` 添加一个remote
+`$ git fetch <remote>` 会pull down all the data from that remote project 好比新的分支。这是download下来，不会自动merge
+`$ git pull <remote> <branch>` 如果branch已经set up to track a remote branch那直接git pull就可以了
+`$ git push <remote> <branch>` push it upstream。push需要有权限。如果别人在你上次pull之后修改过remote内容，还需要先pull再push
+`$ git remote show <remote>` 查看remote详细信息
+`$ git remote rename pb pual` 给<remote>改名字
+`$ git remote remove <remote>` remove <remote>
 
 
 ### 2.6 Git Basics - Tagging
@@ -128,22 +128,22 @@ $ git remote remove <remote> remove <remote>
 
 tag的创建支持两种类型：lightweight和annotated。lightweight是pointer to a specific commit。annotated是有自己完整的信息，如checksummed, tagger name, email, etc.
 
-$ git tag -a v1.4 -m "my version 1.4" 使用-a参数创建annotated tag, -m tagging message
-$ git show v1.4 查看tag信息
-$ git tag v1.4-1w 不使用-a, -s, or -m参数
-$ git tag -a v1.2 9fceb02 在某个commit上生成tag
-$ git push <remote> tag 和<remote>分享tag。或者使用--tags push所有的tag
-$ git tag -d v1.4-1w 删除本地的tag。$ git push <remote> :refs/tags/v1.4-1w 更新到remote端
-$ git checkout <tag> 这时会在detached HEAD。或者直接从tag checkout一个分支 $ git checkout -b <branch> <tag>
+`$ git tag -a v1.4 -m "my version 1.4"` 使用-a参数创建annotated tag, -m tagging message
+`$ git show v1.4` 查看tag信息
+`$ git tag v1.4-1w` 不使用-a, -s, or -m参数
+`$ git tag -a v1.2 9fceb02` 在某个commit上生成tag
+`$ git push <remote> tag` 和<remote>分享tag。或者使用--tags push所有的tag
+`$ git tag -d v1.4-1w` 删除本地的tag。$ git push <remote> :refs/tags/v1.4-1w 更新到remote端
+`$ git checkout <tag>` 这时会在detached HEAD。或者直接从tag checkout一个分支 $ git checkout -b <branch> <tag>
 
 
 ### 2.7 Git Basics - Git Aliases
 
 不一定会用到，但是可以知道。使用git config来设置别名
 
-$ git config --global alias.co checkout 后就可以是使用 $ git co 代替 $ git checkout
-$ git config --global alias.last 'log -l HEAD' $ git last 展示最后一条commit信息
-$ git config --global alias.visual '!gitk' $ git visual 用 ! 符号使用非git命令
+`$ git config --global alias.co checkout` 后就可以是使用 $ git co 代替 $ git checkout
+`$ git config --global alias.last 'log -l HEAD' $ git last` 展示最后一条commit信息
+`$ git config --global alias.visual '!gitk' $ git visual` 用 ! 符号使用非git命令
 
 
 ### 3.1 Git Branching - Branches in a Nutshell
