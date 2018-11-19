@@ -241,6 +241,41 @@ rebase和merge都能合并代码，但是rebasing makes for a cleaner history. �
 
 不要rebase已经shared过的commit。
 
+
+### 4.1 Git on the Server - The Protocols
+
+四种协议：Local, HTTP, Secure Shell(SSH) and Git. 
+
+最常用的是HTTPS的Smart HTTP和SSH。
+
+Local Protocol 在remote repository是在同一个host的别的路径下。clone项目可以
+```
+$ git clone file:///srv/git/project.git
+```
+
+The Git Protocol, a special daemon that comes packed with Git; it listens on a dedicated port(9418)。没有认证。
+
+
+### 4.2 - 4.9 Git on the Server
+
+可以自己搭建git，git也有自带的GitWeb页面。但是建议直接使用GitLab或者第三方如GitHub等。
+
+
+### 5.1 Distributed Git - Distributed Workflows
+
+workflow并不是一定的。可以选择一个或者mixin多个。
+
+Centralized Workflow 就是集中的一个central shared repository大家都有push权限。push之前先merge最新的代码。
+
+Intergration-Manager Workflow 每个developer有自己repository的写权限和其他人的读权限。还有一个offical的project。开发者写到自己的repository然后给offical项目提交pull request。GitHub或GitLab中常用的是这种。
+
+Dictator and Lieutenants Workflow （司令官与副官工作流）, Linux kernel是使用这种方式。副官的各个集成管理者负责项目中的特定部分。副官合并了其他开发者的提交到自己的master分之后再向司令官提交所有的代码。
+
+
+### 5.2 Distributed Git - Contributing to a Project
+
+
+
 ### 10.2 Git Internals - Git Objects
 
 
