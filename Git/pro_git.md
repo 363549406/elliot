@@ -274,7 +274,11 @@ Dictator and Lieutenants Workflow （司令官与副官工作流）, Linux kerne
 
 ### 5.2 Distributed Git - Contributing to a Project
 
+Git source code中`Documentation/SubmittingPatches`文件中有tips for creating commits.
 
+1. `git diff --check` 检查whitespace errors.
+2. try to make each commit a logically separate changeset. 尽量做到一个issue至少有一个commit
+3. 注意commit message. 第一行小于50 character 空格 details，尽量用现在时
 
 ### 10.2 Git Internals - Git Objects
 
