@@ -280,6 +280,8 @@ Git source code中`Documentation/SubmittingPatches`文件中有tips for creating
 2. try to make each commit a logically separate changeset. 尽量做到一个issue至少有一个commit
 3. 注意commit message. 第一行小于50 character 空格 details，尽量用现在时
 
+
+
 ### 10.2 Git Internals - Git Objects
 
 
