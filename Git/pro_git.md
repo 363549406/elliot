@@ -279,8 +279,112 @@ Git source code中`Documentation/SubmittingPatches`文件中有tips for creating
 1. `git diff --check` 检查whitespace errors.
 2. try to make each commit a logically separate changeset. 尽量做到一个issue至少有一个commit
 3. 注意commit message. 第一行小于50 character 空格 details，尽量用现在时
+4. 有时可能需要rebase。可以直接基于remote来rebase。
+   > git checkout featureA  
+   > git rebase origin/master  
+   > git push -f myfork featureA  
 
 
+### 5.3 Distributed Git - Maintaining a Project
+
+0. 习惯将branch的名字起为 sc/ruby_client。sc是username，branch name使用`_`来分隔。
+
+查看贡献者都做了哪些改进。
+
+* 查看不在master分支上的commit
+   > git log contrib --not master  
+* 查看每个commit都修改了什么
+   > git log -p
+* the changes added to the topic branch
+   > git diff $(git merge-base contrib master)  
+   OR  
+   git diff master...contrib
+   
+   这里不能使用`git diff master`因为是直接比较snapshot，你可能改过master，那样子就不只有topic branch 新增还会显得remote了master新增。
+
+intergating contributed work
+
+* 只有一个master分支。就直接将各个feature分支合并进来，这就有先后顺序，以后你万一要revert的时候就可能会头大。不稳。
+* 有master和develop分支。develop来merge有稳定版本打tag，master再fast merge过去。
+* 【有点没有理解】rebasing是为了保持commit的线性
+* cherry-picking。有了master和topic两个分支，在topic上有多个commit。但是不一定都想保留。可以在master分支上选择性的introduce topic的commit。
+   > git cherry-pick e43a6
+* rerere "reuse recorded resolution" 【有点没理解，感觉蛮危险的】
+
+Tagging Your Releases
+
+
+### 6 GitHub
+
+0. reference the old Pull Request 使用 username/repo#num
+1. task lists 使用markdown feature
+   ```markdown
+   - [x] Write the code
+   - [ ] Write all the tests
+   ```
+2. 扩展名为CONTRIBUTING文件，在有人开启合并请求时会显示guidelines for contrubuting
+3. Services可以添加服务到其他的商业与开源系统中。（持续集成、BUG与问题追踪、聊天室系统、文档系统）
+4. 钩子 - Webhooks：指定一个URL然后GitHub在任一期望的事情发生时就会发送一个HTTP请求到这个URL
+   * [GitHub - Webhoos](https://developer.github.com/webhooks/)
+* GitHub API：比Services和Webhooks更详细。部分需要授权。
+   * 授权方式：密码或者access token
+   * Octokit：利用API的开源库
+   * [GitHub - API](https://developer.github.com/)
+
+
+### 7.1 Git工具 - 选择修订版本
+
+* 简短的SHA-1：一般项目8~10个字符就可以保证唯一
+   ```
+   git log --abbrev-commit --pretty=oneline
+   ```
+* Branch References：分支指向某一次commit (SHA-1) 。一个底层的命令可以查看分支指向的commit
+   ```
+   git rev-parse branch-name
+   ```
+* RefLog Shortnames：**存储在本地**，新clone到本地的仓库，reflog日志为空。用来记录最近几个月HEAD和branch ref所指向的历史。
+   ```
+   git reflog   # 查看所有日志
+   git show HEAD@{5}  # HEAD最近第5个commit
+   git show master@{yesterday} # master昨天所指向的commit
+   ```
+* Ancestry References: 祖先ref。使用`^`和`~`，却别是`^2`指merge中的第二个分支，`~2`指父分支的父分支。
+   ```
+   $ git log --pretty=format:'%h %s' --graph
+   * 734713b fixed refs handling, added gc auto, updated tests
+   *   d921970 Merge commit 'phedders/rdocs'
+   |\
+   | * 35cfb2b Some rdoc changes
+   * | 1c002dd added some blame and merge stuff
+   |/
+   * 1c36188 ignore *.gem
+   * 9b29157 add open3_detach to gemspec file list
+   ```
+   ```
+   $ git show HEAD^  # 父分支
+   $ git show HEAD^2 # the second parent of HEAD
+   $ git show HEAD~2 # the parent of parent of HEAD
+   $ git show HEAD~~ # the parent of parent of HEAD
+   $ git show HEAD^^ # the parent of parent of HEAD
+   ```
+* Commit Ranges：如何查看一定区间的提交。
+   * 双点：在后一个分支中但不在前一个分支中的提交
+      ```
+      $ git log master..develop  # 查看没合并到master的commit
+      $ git log mine/develop..develop  # 查看会提交到远端的commit
+      ```
+   * Multiple Points：seeing what commits are in any of serveral branches that aren't in the another branch. 在不想要的分支前加`^`或`--not`。
+      ```
+      $ git log refA refB ^refC
+      $ git log refA refB --not refC
+      $ git log ^refA refB
+      $ git log refB --not refA
+      ```
+   * Triple Dot: specifies all the commits that are reachable by __either__ of two references but not by both of them.
+      ```
+      $ git log master...develop
+      $ git log --left-right master...develop # shows you which side of the range each commit is in.
+      ```
 
 ### 10.2 Git Internals - Git Objects
 
