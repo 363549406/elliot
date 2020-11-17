@@ -4,6 +4,7 @@ abbreviate          简略
 aka                 又名
 clipboard           剪切板
 comma               逗号
+decimal             十进制
 decrease            减少
 dot                 点号
 encapsulation       封装
@@ -12,6 +13,7 @@ exclude             排除，不包括
 include             包括
 increase            增加
 inspect             检查
+latency             延迟（计算机）Utilities for latency measurement and reporting (本意：潜伏）
 mute                静音
 punctuation         标点
 prompt              提示

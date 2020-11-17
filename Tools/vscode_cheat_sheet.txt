@@ -10,3 +10,5 @@ ctrl + tab : 切换tab
 workbench.editor.enablePreview : false 关闭了预览模式，这样再打开文件后就不会覆盖。现在很对编辑器都是预览的模式，文件使用的tab会被覆盖。
 
 shift + cmd + [ ( ] ) : preview ( next ) tab
+
+f12 go to definition
